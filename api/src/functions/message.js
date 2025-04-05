@@ -8,7 +8,7 @@ app.http('message', {
 
         const name = request.query.get('name') || await request.text() || 'world';
 
-        return { body: `Hello, ${name}!` };
+        return { body: `{"text": "Hello," ${name}! }` };
        // return { body: `{ "text": "Hello, from the API!" }` };
     }
 });
