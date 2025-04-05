@@ -1,4 +1,5 @@
 const { app } = require('@azure/functions');
+const { CosmosClient } = require("@azure/cosmos");
 
 app.http('getInputVariables', {
     methods: ['GET', 'POST'],
@@ -9,20 +10,30 @@ app.http('getInputVariables', {
       //  const name = request.query.get('name') || await request.text() || 'world';
 
       //  return { body: `Hello, ${name}!` };
+      
+        module.exports = async function (context, req) {
+            const name = req.body.name;
 
-        function storeText() {
-            // Get the value entered by the user
-            var userInput = document.getElementById('userInput').value;
+            const endpoint = process.env.COSMOS_DB_ENDPOINT;
+            const key = process.env.COSMOS_DB_KEY;
+            const databaseId = "UserDatabase";
+            const containerId = "Users";
 
-            // Store it in a variable (this can be done in different ways depending on what you want to do with the text)
-            var storedText = userInput;
+            const client = new CosmosClient({ endpoint, key });
+            const container = client.database(databaseId).container(containerId);
 
-            // Display the stored text on the page
-            document.getElementById('result').innerText = "You entered: " + storedText;
+            const newItem = {
+                id: context.executionContext.invocationId,
+                name: name
+            };
 
-            // Optional: Clear the input field
-            document.getElementById('userInput').value = '';
-        }
+            await container.items.create(newItem);
+
+            context.res = {
+                status: 200,
+                body: "User saved!"
+            };
+        };
 
     }
 });

@@ -42,3 +42,24 @@ function sendDataToAPI(storedText) {
             document.getElementById('result').innerText = "Oops! Something went wrong.";
         });
 }
+
+function submitName() {
+    const userName = document.getElementById('nameInput').value;
+    console.log("User entered:", userName);
+
+    // Now let's send this to our Azure function
+    fetch(`/api/getInputVariables`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name: userName })
+    })
+        .then(response => response.text())
+        .then(data => {
+            alert("Data saved!");
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
