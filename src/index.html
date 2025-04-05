@@ -12,6 +12,17 @@
   <main>
     <h1>Vanilla Dodeca v3 JavaScript App</h1>
     <p>Loading content from the API: <b id="name">...</b></p>
+
+        <h1>Enter Text</h1>
+        <form id="textForm">
+          <label for="userInput">Your Text:</label>
+          <input type="text" id="userInput" name="userInput">
+          <button type="button" onclick="storeText()">Submit</button>
+        </form>
+        
+        <p id="result"></p>
+        
+        <script src="getInputVariables.js"></script>
     </main>
     
     <script>
