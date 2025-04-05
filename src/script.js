@@ -16,16 +16,15 @@ function storeText() {
 }
 
 function sendDataToAPI(storedText) {
-    // Prepare data to send
+    // Prepare the data to send
     var data = {
-        title: storedText,  // Use the text entered by the user as the title (for this example)
-        body: "This is the body text for your post", // This is just some sample data
-        userId: 1  // A placeholder userId, you can replace it if needed
+        userText: storedText,  // Send the text entered by the user as 'userText'
+        timestamp: new Date().toISOString()  // Optional: Add a timestamp to the data
     };
 
-    // Send the data to the API using Fetch API
-    fetch('https://jsonplaceholder.typicode.com/posts', {
-        method: 'POST',  // We are making a POST request
+    // Send the data to the Postman Echo API using Fetch API
+    fetch('https://postman-echo.com/post', {
+         method: 'POST',  // We are making a POST request
         headers: {
             'Content-Type': 'application/json'  // Tell the server that we are sending JSON
         },
