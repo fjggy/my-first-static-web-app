@@ -31,7 +31,7 @@ app.http('getInputVariables', {
 
             context.res = {
                 status: 200,
-                body: "User saved!"
+                body: "User saved!" + name
             };
         };
 
