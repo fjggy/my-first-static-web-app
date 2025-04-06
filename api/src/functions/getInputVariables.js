@@ -29,12 +29,9 @@ app.http('getInputVariables', {
 
             await container.items.create(newItem);
 
-            const count = await container.items.readAll().fetchAll();
-            context.log(`Total items in container: ${count.resources.length}`);
-
             context.res = {
                 status: 200,
-                body: context.log
+                body: "User saved!"
             };
         };
 
