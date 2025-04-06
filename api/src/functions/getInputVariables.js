@@ -25,7 +25,7 @@ app.http('getInputVariables', {
       //      const newItem = {
       //          id: context.executionContext.invocationId,
       //          name: name
-            };
+      //      };
 
       //      await container.items.create(newItem);
 
@@ -33,7 +33,7 @@ app.http('getInputVariables', {
       //          status: 200,
       //          body: "User saved!"
       //      };
-        };
+      //  };
 
     }
 });
