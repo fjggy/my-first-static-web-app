@@ -76,3 +76,21 @@ async function submitName() {
     document.getElementById('response').textContent =
         `Hello, ${name}! There are now ${result.totalUsers} users in the database.`;
 }
+
+    async function fetchData() {
+      try {
+        // Replace with the actual function URL
+          const response = await fetch('https://static-web-apps-function.azurewebsites.net/api/submitUser2');
+        const data = await response.json();
+
+        // Handle the API response
+        console.log('Data from API:', data);
+        document.getElementById('result').innerHTML = JSON.stringify(data);
+      } catch (error) {
+            console.error('Error fetching data:', error);
+      }
+    }
+
+        // Trigger the fetchData function on page load
+        window.onload = fetchData;
+

@@ -13,6 +13,9 @@
     <h1>Vanilla Dodeca v3 JavaScript App</h1>
     <p>Loading content from the API: <b id="name">...</b></p>
 
+        <h1>Welcome to My Static Web App</h1>
+        <div id="result">Loading data from API...</div>
+
         <h1>Enter Text</h1>
         <form id="textForm">
           <label for="userInput">Your Text:</label>
@@ -35,6 +38,25 @@
         const { text } = await (await fetch(`/api/message`)).json();
         document.querySelector('#name').textContent = text;
       }());
+    </script>
+
+    <script>
+      async function fetchData() {
+        try {
+          // Replace with the actual function URL
+          const response = await fetch('https://<your-function-app-name>.azurewebsites.net/api/getInputVariables');
+          const data = await response.json();
+
+          // Handle the API response
+          console.log('Data from API:', data);
+          document.getElementById('result').innerHTML = JSON.stringify(data);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      }
+
+      // Trigger the fetchData function on page load
+      window.onload = fetchData;
     </script>
 
 </body>
