@@ -43,7 +43,7 @@ function sendDataToAPI(storedText) {
         });
 }
 
-function submitName() {
+function submitNameOld() {
     const userName = document.getElementById('nameInput').value;
     console.log("User entered:", userName);
 
@@ -62,4 +62,16 @@ function submitName() {
         .catch(error => {
             console.error('Error:', error);
         });
+}
+
+async function submitName() {
+    const name = document.getElementById('nameInput').value;
+    const response = await fetch('/api/submitUser', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name })
+    });
+    const result = await response.json();
+    document.getElementById('response').textContent =
+        `Hello, ${name}! There are now ${result.totalUsers} users in the database.`;
 }
