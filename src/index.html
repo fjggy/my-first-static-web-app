@@ -35,7 +35,7 @@
     
     <script>
       (async function () {
-        const { text } = await (await fetch('/api/message')).json();
+        const { text } = await (await fetch('https://my-first-static-web-app3-function.azurewebsites.net/api/submitUser3')).json();
         document.querySelector('#name').textContent = text;
       }());
     </script>
