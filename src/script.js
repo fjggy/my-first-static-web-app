@@ -67,7 +67,7 @@ function submitNameOld() {
 
 async function submitName() {
     const name = document.getElementById('nameInput').value;
-    const response = await fetch('https://my-first-static-web-app3-function.azurewebsites.net/api/storeUser?', {
+    const response = await fetch('https://my-first-static-web-app3-function.azurewebsites.net/api/storeUser', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name })
