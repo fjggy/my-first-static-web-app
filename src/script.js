@@ -1,3 +1,4 @@
+// no longer used
 function storeText() {
     // Get the value entered by the user
     var userInput = document.getElementById('userInput').value;
@@ -15,6 +16,7 @@ function storeText() {
     sendDataToAPI(storedText);
 }
 
+// no longer used
 function sendDataToAPI(storedText) {
     // Prepare data to send
     var data = {
