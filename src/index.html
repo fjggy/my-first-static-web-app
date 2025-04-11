@@ -35,7 +35,7 @@
     
     <script>
       (async function () {
-        const { text } = await (await fetch('https://my-first-static-web-app3-function.azurewebsites.net/api/submitUser4')).json();
+        const { text } = await (await fetch('https://my-first-static-web-app3-function.azurewebsites.net/api/submitUser4?name=Fiona')).json();
         document.querySelector('#name').textContent = text;
       }());
     </script>
@@ -45,7 +45,7 @@
         try {
           // Replace with the actual function URL
           const response = await fetch('/api/submitUser');
-          const data = await response.json();
+            const data = await response.json();
 
           // Handle the API response
           console.log('Data from API:', data);
